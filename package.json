@@ -1,0 +1,24 @@
+{
+  "author": "Russell Wallace <russell.wallace@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/russellw/unification/issues"
+  },
+  "description": "Unification in first-order logic",
+  "homepage": "https://github.com/russellw/unification#readme",
+  "keywords": [
+    "logic"
+    "unification",
+    "unify",
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "unification",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/russellw/unification.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.1.0"
+}
