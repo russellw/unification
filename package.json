@@ -6,9 +6,9 @@
   "description": "Unification in first-order logic",
   "homepage": "https://github.com/russellw/unification#readme",
   "keywords": [
-    "logic"
+    "logic",
     "unification",
-    "unify",
+    "unify"
   ],
   "license": "MIT",
   "main": "index.js",
