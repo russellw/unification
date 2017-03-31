@@ -8,10 +8,10 @@ function unifyVar(a, b, m) {
 		return unify(a, m.get(b), m);
 	}
 	if (occurs(a, b, m)) {
-		return false;
+		return null;
 	}
 	m.set(a, b);
-	return true;
+	return m;
 }
 
 // API
@@ -34,8 +34,9 @@ function occurs(a, b, m) {
 }
 
 function unify(a, b, m) {
+	m = m || new Map();
 	if (a === b) {
-		return true;
+		return m;
 	}
 	if (a.op === 'var') {
 		return unifyVar(a, b, m);
@@ -44,20 +45,27 @@ function unify(a, b, m) {
 		return unifyVar(b, a, m);
 	}
 	if (a.op !== b.op) {
-		return false;
+		return null;
 	}
-	if (!a.args) {
+	switch (a.op) {
+	case 'call':
+		if (a.fun !== b.fun) {
+			return null;
+		}
+		break;
+	case 'const':
 		return a.val === b.val;
 	}
+	if (!a.args) {
+		return m;
+	}
 	if (a.args.length !== b.args.length) {
-		return false;
+		return null;
 	}
-	for (var i = 0; i < a.length; i++) {
-		if (!unify(a.args[i], b.args[i], m)) {
-			return false;
-		}
+	for (var i = 0; i < a.args.length && m; i++) {
+		m = unify(a.args[i], b.args[i], m);
 	}
-	return true;
+	return m;
 }
 
 exports.occurs = occurs;
