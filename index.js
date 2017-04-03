@@ -14,7 +14,7 @@ function unifyVar(a, b, m) {
 	return m;
 }
 
-// API
+// Exports
 
 function occurs(a, b, m) {
 	if (a === b) {
