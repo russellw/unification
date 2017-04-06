@@ -1,18 +1,5 @@
 'use strict'
 
-function unifyVar(a, b, m) {
-	if (m.has(a))
-		return unify(m.get(a), b, m)
-	if (m.has(b))
-		return unify(a, m.get(b), m)
-	if (occurs(a, b, m))
-		return null
-	m.set(a, b)
-	return m
-}
-
-// Exports
-
 function occurs(a, b, m) {
 	if (a === b)
 		return true
@@ -48,6 +35,17 @@ function unify(a, b, m=new Map()) {
 		return null
 	for (var i = 0; i < a.args.length && m; i++)
 		m = unify(a.args[i], b.args[i], m)
+	return m
+}
+
+function unifyVar(a, b, m) {
+	if (m.has(a))
+		return unify(m.get(a), b, m)
+	if (m.has(b))
+		return unify(a, m.get(b), m)
+	if (occurs(a, b, m))
+		return null
+	m.set(a, b)
 	return m
 }
 
