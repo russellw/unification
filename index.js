@@ -25,8 +25,7 @@ function occurs(a, b, m) {
 			return true
 }
 
-function unify(a, b, m) {
-	m = m || new Map()
+function unify(a, b, m=new Map()) {
 	if (a === b)
 		return m
 	if (a.op === 'var')
