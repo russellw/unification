@@ -23,7 +23,7 @@ function unify(a, b, m=new Map()) {
 		return null
 	switch (a.op) {
 	case 'call':
-		if (a.fun !== b.fun)
+		if (a.f !== b.f)
 			return null
 		break
 	case 'const':
